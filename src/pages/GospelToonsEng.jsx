@@ -134,7 +134,7 @@ const GospelToonsEng = () => {
                 height={60}
                 width={60}
                 color="#ffa72c"
-                secondaryColor="#764ba2"
+                secondaryColor="#ffa72c"
                 visible={true}
                 ariaLabel="dots-loading"
               />
@@ -147,8 +147,8 @@ const GospelToonsEng = () => {
                 <ThreeDots
                   height={60}
                   width={60}
-                  color="#4A90E2"
-                  secondaryColor="#764ba2"
+                  color="#ffa72c"
+                  secondaryColor="#ffa72c"
                   visible={true}
                   ariaLabel="oval-loading"
                 />

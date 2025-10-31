@@ -1,55 +1,44 @@
 import { useState, useEffect } from 'react'
+import { Link, useLocation } from 'react-router-dom'
 import './Header.css'
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const [activeSection, setActiveSection] = useState('home')
+  const location = useLocation()
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 100)
-
-      // Update active section
-      const sections = ['home', 'gospel-english', 'gospel-tamil', 'jesus']
-      const current = sections.find(section => {
-        const element = document.getElementById(section)
-        if (element) {
-          const rect = element.getBoundingClientRect()
-          return rect.top <= 200 && rect.bottom >= 200
-        }
-        return false
-      })
-      if (current) setActiveSection(current)
     }
 
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  const scrollToSection = (sectionId) => {
-    const element = document.getElementById(sectionId)
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' })
-    }
+  const isActive = (path) => {
+    return location.pathname === path
+  }
+
+  const closeMenus = () => {
     setMobileMenuOpen(false)
   }
 
   return (
     <header className={`header ${scrolled ? 'scrolled' : ''}`}>
       <div className="header-container">
-        <div className="logo-section">
+        <Link to="/" className="logo-section" onClick={closeMenus}>
           <div className="logo-circle">
             <img 
-              src="/images/logo.jpg" 
-              alt="Logo" 
+              src="/images/my icon.png" 
+              alt="Profile"
               className="logo-img"
+              onError={(e) => {
+                e.target.src = '/images/Profile1.jpeg'
+              }}
             />
           </div>
-          <div className="logo-text">
-            <h1 className="logo-title">Sathish Paul SDB</h1>
-          </div>
-        </div>
+        </Link>
 
         <nav className={`nav-menu ${mobileMenuOpen ? 'active' : ''}`}>
           <button 
@@ -60,40 +49,40 @@ const Header = () => {
           </button>
           <ul className="nav-list">
             <li>
-              <a 
-                href="#home" 
-                className={`nav-link ${activeSection === 'home' ? 'active' : ''}`}
-                onClick={(e) => { e.preventDefault(); scrollToSection('home') }}
+              <Link 
+                to="/"
+                className={`nav-link home-link ${location.pathname === '/' ? 'active' : ''}`}
+                onClick={closeMenus}
               >
-                <i className="fas fa-home"></i> Home
-              </a>
+                Home
+              </Link>
             </li>
             <li>
-              <a 
-                href="#gospel-english" 
-                className={`nav-link ${activeSection === 'gospel-english' ? 'active' : ''}`}
-                onClick={(e) => { e.preventDefault(); scrollToSection('gospel-english') }}
+              <Link 
+                to="/gospeltoons-eng"
+                className={`nav-link ${isActive('/gospeltoons-eng') ? 'active' : ''}`}
+                onClick={closeMenus}
               >
-                <i className="fas fa-book-open"></i> Gospel Toons English
-              </a>
+                Gospeltoons Eng
+              </Link>
             </li>
             <li>
-              <a 
-                href="#gospel-tamil" 
-                className={`nav-link ${activeSection === 'gospel-tamil' ? 'active' : ''}`}
-                onClick={(e) => { e.preventDefault(); scrollToSection('gospel-tamil') }}
+              <Link 
+                to="/gospeltoons-tamil"
+                className={`nav-link ${isActive('/gospeltoons-tamil') ? 'active' : ''}`}
+                onClick={closeMenus}
               >
-                <i className="fas fa-book"></i> Gospel Toons Tamil
-              </a>
+                Gospeltoons Tamil
+              </Link>
             </li>
             <li>
-              <a 
-                href="#jesus" 
-                className={`nav-link ${activeSection === 'jesus' ? 'active' : ''}`}
-                onClick={(e) => { e.preventDefault(); scrollToSection('jesus') }}
+              <Link 
+                to="/catholic-designs"
+                className={`nav-link ${isActive('/catholic-designs') ? 'active' : ''}`}
+                onClick={closeMenus}
               >
-                <i className="fas fa-dove"></i> Sacred Gallery
-              </a>
+                Catholic Designs
+              </Link>
             </li>
           </ul>
         </nav>
@@ -103,4 +92,3 @@ const Header = () => {
 }
 
 export default Header
-

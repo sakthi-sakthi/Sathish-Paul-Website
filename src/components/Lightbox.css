@@ -54,6 +54,7 @@
     padding: 0.8rem 1.5rem;
     border-radius: 25px;
     backdrop-filter: blur(10px);
+    display: none;
 }
 
 .lightbox-counter {

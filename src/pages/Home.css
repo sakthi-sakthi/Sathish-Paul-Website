@@ -142,7 +142,7 @@
   display: flex;
   align-items: center;
   gap: 2rem;
-  max-width: 1000px;
+  max-width: 726px;
   width: 100%;
 }
 
@@ -278,12 +278,7 @@
   }
   
   .about-section {
-    gap: 4rem;
-  }
-  
-  .about-image {
-    width: 320px;
-    height: 320px;
+    gap: 2rem;
   }
   
   .about-text h2 {
@@ -335,13 +330,25 @@
   }
   
   .category-circles {
-    gap: 1rem;
-    margin: 0.5rem 0;
+    flex-direction: column;     /* stack vertically */
+    align-items: center;        /* center each circle */
+    justify-content: center;
+    gap: 1.2rem;
+    overflow-x: hidden;         /* disable horizontal scroll */
+    margin-top: 1rem;
   }
-  
+
   .category-circle {
-    width: 88px;
-    height: 88px;
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;            /* center circle */
+  }
+
+  .about-image img{
+    width: 64%;
+    height: 64%;
+    object-fit: cover;
+    border-radius: 50%;
   }
   
   .gt-logo-large {
@@ -371,18 +378,18 @@
     flex-direction: column;
     text-align: center;
     gap: 1.5rem;
-    margin-top: 1rem;
-    padding: 0.5rem;
   }
   
   .about-image {
     width: 180px;
     height: 180px;
+    margin-top: -29px;
   }
   
   .about-text h2 {
     font-size: 1.6rem;
     margin-bottom: 0.8rem;
+    margin-top: -4rem;
   }
   
   .about-text p {

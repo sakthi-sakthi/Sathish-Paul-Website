@@ -37,7 +37,7 @@ const Header = () => {
                 e.target.src = '/images/Profile1.jpeg'
               }}
             />
-          </div> <h2 className="logo-text font-weight-bold">Sathish Paul SDB</h2>
+          </div> <h2 className="logo-text font-weight-bold" style={{ color: '#000' }}>Sathish Paul SDB</h2>
         </Link>
 
         <nav className={`nav-menu ${mobileMenuOpen ? 'active' : ''}`}>

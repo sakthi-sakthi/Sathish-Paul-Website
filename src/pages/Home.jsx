@@ -85,7 +85,6 @@ const Home = () => {
             />
           </div>
           <div className="about-text">
-            <h2>Sathish Paul SDB</h2>
             <p className="text-justify">
               Fr. Sathish Paul is a Salesian priest from the province of Chennai with a professional background in Art and Graphic Design. With extensive experience in the field, he brings creativity and innovation to the mission. Deeply committed to sharing God's love, he believes in the power of art and aesthetics to engage and inspire young people, making faith accessible through visual and creative platforms.
             </p>
